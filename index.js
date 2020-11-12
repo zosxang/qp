@@ -6,9 +6,9 @@
  * Module dependencies
  */
 
-const parser = require('./parser');
-const native = require('./native');
-const sift = require('./sift');
+const parser = require('./lib/qp/parser');
+const native = require('./lib/qp/native');
+const sift = require('./lib/qp/sift');
 
 /**
  * Expose filter
@@ -24,8 +24,8 @@ exports = module.exports = function filter (query, list, adapter = 'native') {
   const tree = parser
     .parse(query);
 
-  const fn = adapter === 'native' 
-    ? native 
+  const fn = adapter === 'native'
+    ? native
     : sift;
 
   return fn(tree, list);
